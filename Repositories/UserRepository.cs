@@ -13,12 +13,12 @@ namespace TaskSystemAPIBackEnd.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<UserModel> GetById(int id)
+        public async Task<UserModel> GetUserById(int id)
         {
             return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<UserModel>> GetAll()
+        public async Task<List<UserModel>> GetAllUsers()
         {
             return await _dbContext.Users.ToListAsync();
         }
@@ -35,7 +35,7 @@ namespace TaskSystemAPIBackEnd.Repositories
 
         public async Task<bool> Delete(int id)
         {
-            UserModel userId = await GetById(id);
+            UserModel userId = await GetUserById(id);
 
             if (userId == null)
             {
@@ -50,7 +50,7 @@ namespace TaskSystemAPIBackEnd.Repositories
       
         public async Task<UserModel> Update(UserModel user, int id)
         {
-            UserModel userId = await GetById(id);
+            UserModel userId = await GetUserById(id);
             
             if(userId == null)
             {

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskSystemAPIBackEnd.Data;
 
@@ -11,9 +12,11 @@ using TaskSystemAPIBackEnd.Data;
 namespace TaskSystemAPIBackEnd.Migrations
 {
     [DbContext(typeof(TaskSystemDbContext))]
-    partial class TaskSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240930190011_TarefaLinkedToUser")]
+    partial class TarefaLinkedToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

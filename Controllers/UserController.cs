@@ -20,26 +20,26 @@ namespace TaskSystemAPIBackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<List<UserModel>>> GetAllUsers()
         {
-          List<UserModel> users = await _userRepository.GetAll();
+          List<UserModel> users = await _userRepository.GetAllUsers();
             return Ok(users);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<UserModel>> GetById(int id)
         {
-            UserModel user = await _userRepository.GetById(id);
+            UserModel user = await _userRepository.GetUserById(id);
             return Ok(user);
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserModel>> SignUp([FromBody] UserModel userModel)
+        public async Task<ActionResult<UserModel>> Create([FromBody] UserModel userModel)
         {
             UserModel user = await _userRepository.Add(userModel);
             return Ok(user);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<UserModel>> UpdateUser([FromBody] UserModel userModel, int id)
+        public async Task<ActionResult<UserModel>> Update([FromBody] UserModel userModel, int id)
         {
             userModel.Id = id;
             UserModel user = await _userRepository.Update(userModel, id);
@@ -47,7 +47,7 @@ namespace TaskSystemAPIBackEnd.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<UserModel>> DeleteUser(int id)
+        public async Task<ActionResult<UserModel>> Delete(int id)
         {
             bool deleted = await _userRepository.Delete(id);
             return Ok(deleted);
